@@ -133,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       },
                       color: isOperator(buttons[index])
                           ? Colors.deepPurple
-                          : Colors.deepPurple[50],
+                          : Colors.deepPurple[50] ?? Colors.white,
                       textColor: isOperator(buttons[index])
                           ? Colors.white
                           : Colors.deepPurple,
