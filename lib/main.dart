@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_calculator/buttons.dart';
 import 'package:math_expressions/math_expressions.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -57,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple[100],
+      backgroundColor: Color.fromARGB(255, 83, 83, 83),
       body: Column(
         children: [
           Expanded(
@@ -68,12 +69,26 @@ class _MyHomePageState extends State<MyHomePage> {
                   Container(
                     padding: EdgeInsets.all(20),
                     alignment: Alignment.centerLeft,
-                    child: Text(userInput, style: TextStyle(fontSize: 20)),
+                    child: Text(
+                      userInput,
+                      style: GoogleFonts.roboto(
+                        fontSize: 25,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
                   ),
                   Container(
                     padding: EdgeInsets.all(20),
                     alignment: Alignment.centerRight,
-                    child: Text(userAnswer, style: TextStyle(fontSize: 20)),
+                    child: Text(
+                      userAnswer,
+                      style: GoogleFonts.poppins(
+                        fontSize: 40,
+                        color: Colors.white,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -120,7 +135,18 @@ class _MyHomePageState extends State<MyHomePage> {
                           equalPressed();
                         });
                       },
-                      color: Colors.deepPurple,
+                      color: Color(0xFF263C49),
+                      textColor: Colors.white,
+                      buttonText: buttons[index],
+                    );
+                  } else if (buttons[index] == 'ANS') {
+                    return MyButton(
+                      buttonTapped: () {
+                        setState(() {
+                          userInput += userAnswer;
+                        });
+                      },
+                      color: Color(0xFF263C49),
                       textColor: Colors.white,
                       buttonText: buttons[index],
                     );
@@ -132,11 +158,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         });
                       },
                       color: isOperator(buttons[index])
-                          ? Colors.deepPurple
-                          : Colors.deepPurple[50] ?? Colors.white,
+                          ? Color(0xFF263C49)
+                          : Color(0xFF10120D),
                       textColor: isOperator(buttons[index])
                           ? Colors.white
-                          : Colors.deepPurple,
+                          : Color(0xFFDFE0E2),
                       buttonText: buttons[index],
                     );
                   }
@@ -163,7 +189,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Expression exp = p.parse(finalUserInput);
     ContextModel cm = ContextModel();
     double eval = exp.evaluate(EvaluationType.REAL, cm);
-
+    
     userAnswer = eval.toString();
 
   }
