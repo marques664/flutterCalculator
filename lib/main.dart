@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_calculator/buttons.dart';
 import 'package:math_expressions/math_expressions.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -70,7 +71,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       userInput,
-                      style: TextStyle(fontSize: 35, color: Colors.grey[400]),
+                      style: GoogleFonts.roboto(
+                        fontSize: 25,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ),
                   Container(
@@ -78,10 +83,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     alignment: Alignment.centerRight,
                     child: Text(
                       userAnswer,
-                      style: TextStyle(
-                        fontSize: 30,
-                        color: const Color(0xFF00BCD4),
-                        fontWeight: FontWeight.bold,
+                      style: GoogleFonts.poppins(
+                        fontSize: 40,
+                        color: Colors.white,
+                        fontWeight: FontWeight.normal,
                       ),
                     ),
                   ),
@@ -130,8 +135,19 @@ class _MyHomePageState extends State<MyHomePage> {
                           equalPressed();
                         });
                       },
-                      color: const Color(0xFF00BCD4),
-                      textColor: Colors.black,
+                      color: Color(0xFF263C49),
+                      textColor: Colors.white,
+                      buttonText: buttons[index],
+                    );
+                  } else if (buttons[index] == 'ANS') {
+                    return MyButton(
+                      buttonTapped: () {
+                        setState(() {
+                          userInput += userAnswer;
+                        });
+                      },
+                      color: Color(0xFF263C49),
+                      textColor: Colors.white,
                       buttonText: buttons[index],
                     );
                   } else {
@@ -142,11 +158,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         });
                       },
                       color: isOperator(buttons[index])
-                          ? const Color(0xFF3d5a80)
-                          : const Color(0xFF2a2a3e),
+                        
+                          ? Color(0xFF263C49)
+                          : Color(0xFF10120D),
                       textColor: isOperator(buttons[index])
-                          ? const Color(0xFF00BCD4)
-                          : Colors.white,
+                         
+                          ? Colors.white
+                          : Color(0xFFDFE0E2),
                       buttonText: buttons[index],
                     );
                   }
@@ -173,7 +191,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Expression exp = p.parse(finalUserInput);
     ContextModel cm = ContextModel();
     double eval = exp.evaluate(EvaluationType.REAL, cm);
-
+    
     userAnswer = eval.toString();
   }
 }
