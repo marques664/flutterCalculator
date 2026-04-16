@@ -6,7 +6,12 @@ class MyButton extends StatelessWidget {
   final String buttonText;
   final buttonTapped;
 
-  MyButton({required this.color, required this.textColor, required this.buttonText, this.buttonTapped});
+  MyButton({
+    required this.color,
+    required this.textColor,
+    required this.buttonText,
+    this.buttonTapped,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +23,16 @@ class MyButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           child: Container(
             color: color,
-            child: Center(child: Text(buttonText, style: TextStyle(color : textColor),),),
+            child: Center(
+              child: Text(
+                buttonText,
+                style: TextStyle(
+                  color: textColor,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ),
         ),
       ),

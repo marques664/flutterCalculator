@@ -29,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
   var userInput = '';
   var userAnswer = '';
 
-  final myTextStyle = TextStyle(fontSize: 30, color: Colors.deepPurple[900]);
+  final myTextStyle = TextStyle(fontSize: 30, color: const Color(0xFF00BCD4));
 
   final List<String> buttons = [
     'C',
@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple[100],
+      backgroundColor: const Color(0xFF0f0f1e),
       body: Column(
         children: [
           Expanded(
@@ -68,12 +68,22 @@ class _MyHomePageState extends State<MyHomePage> {
                   Container(
                     padding: EdgeInsets.all(20),
                     alignment: Alignment.centerLeft,
-                    child: Text(userInput, style: TextStyle(fontSize: 20)),
+                    child: Text(
+                      userInput,
+                      style: TextStyle(fontSize: 35, color: Colors.grey[400]),
+                    ),
                   ),
                   Container(
                     padding: EdgeInsets.all(20),
                     alignment: Alignment.centerRight,
-                    child: Text(userAnswer, style: TextStyle(fontSize: 20)),
+                    child: Text(
+                      userAnswer,
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: const Color(0xFF00BCD4),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -95,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           userInput = '';
                         });
                       },
-                      color: Colors.green,
+                      color: const Color(0xFF00c853),
                       textColor: Colors.white,
                       buttonText: buttons[index],
                     );
@@ -109,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           );
                         });
                       },
-                      color: Colors.red,
+                      color: const Color(0xFFff6b6b),
                       textColor: Colors.white,
                       buttonText: buttons[index],
                     );
@@ -120,8 +130,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           equalPressed();
                         });
                       },
-                      color: Colors.deepPurple,
-                      textColor: Colors.white,
+                      color: const Color(0xFF00BCD4),
+                      textColor: Colors.black,
                       buttonText: buttons[index],
                     );
                   } else {
@@ -132,11 +142,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         });
                       },
                       color: isOperator(buttons[index])
-                          ? Colors.deepPurple
-                          : Colors.deepPurple[50],
+                          ? const Color(0xFF3d5a80)
+                          : const Color(0xFF2a2a3e),
                       textColor: isOperator(buttons[index])
-                          ? Colors.white
-                          : Colors.deepPurple,
+                          ? const Color(0xFF00BCD4)
+                          : Colors.white,
                       buttonText: buttons[index],
                     );
                   }
@@ -165,6 +175,5 @@ class _MyHomePageState extends State<MyHomePage> {
     double eval = exp.evaluate(EvaluationType.REAL, cm);
 
     userAnswer = eval.toString();
-
   }
 }
